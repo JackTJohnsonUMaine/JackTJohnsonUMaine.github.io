@@ -1,0 +1,66 @@
+/* All colors below are built from one base color using relative
+   oklch() syntax: oklch( from <color> l c h )
+   l = lightness (0 to 1)   c = chroma (vividness)   h = hue (0 to 360) */
+
+:root {
+  /* 1. Replace "darkorchid" with another color name of your choosing.
+        Make it a medium color (not too light or dark).
+        Color names: http://tinyurl.com/css-colors */
+  --medium: hsl(207, 44%, 49%);
+
+  /* This one is done for you. Study it before moving on:
+     it takes --medium and raises its lightness by .15. */
+  --lighter:  oklch( from var(--medium) calc(l + .15) c h );
+
+  /* 2. Fill in a number LARGER than .15 (try .3). */
+  --lightest: oklch( from var(--medium) calc(l + .3) c h );
+
+  /* 3. Which operator makes this DARKER than --medium? */
+  --darker:   oklch( from var(--medium) calc(l - .35) c h );
+
+  /* 4. Which channel should we subtract from: l, c, or h? */
+  --darkest:  oklch( from var(--medium) calc(l - .4) c h );
+
+  /* 5. Add 120 or 240 to rotate the hue to a split-opposite color. */
+  --accent:   oklch( from var(--medium) calc(l + .12) c calc(h + 120) );
+
+  /* 6. Tweak your numbers until you're pleased with the result,
+        then post this Pen to the appropriate channel.
+        ⚠️ Not every l/c/h combination produces a distinct color!
+        If two colors look identical, a value was probably clamped. */
+}
+
+/* ______ Do not change anything below this line. ______ */
+
+body {
+  margin: 5%;
+  font-family: verdana;
+  font-size: 1.1em;
+  background-color: var(--lighter);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+h1 {
+  width: 100%;
+  color: var(--lightest);
+  text-shadow: var(--medium) 6px 6px 6px;
+}
+h3 {
+  color: var(--lighter);
+}
+.subsection {
+  flex: 1 1 20em;
+  color: var(--darker);
+}
+.panel {
+  padding: 1em;
+  margin-bottom: 20px;
+  font-size: .9em;
+  border-radius: 6px;
+  background-color: var(--medium);
+  color: var(--darkest);
+}
+a {
+  color: var(--accent);
+}
